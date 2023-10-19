@@ -16,6 +16,6 @@ public class GetAllUsers extends Globals {
             .get("/sw/api/v1/allusers/alluser");
     response.prettyPrint();
 
-    }
+        }
 
 }
