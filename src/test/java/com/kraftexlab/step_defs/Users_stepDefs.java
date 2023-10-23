@@ -19,10 +19,11 @@ public class Users_stepDefs {
 
     @When("Delete this new user")
     public void deleteThisNewUser() {
-        
+        usersRequests.deleteUser();
     }
 
     @Then("Verify that new user is deleted")
     public void verifyThatNewUserIsDeleted() {
+        usersRequests.verifyThatUserIsDeleted();
     }
 }

@@ -27,4 +27,20 @@ public class UsersRequests extends Globals {
         Assert.assertNotNull(token);
         Assert.assertNotNull(userId);
     }
+
+    public void deleteUser(){
+        response= RestAssured.given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .header("token",token)
+                .queryParam("id",userId)
+                .when()
+                .delete("/sw/api/v1/user/delete");
+    }
+    public void verifyThatUserIsDeleted(){
+        response.prettyPrint();
+        Assert.assertEquals("User Deleted Successfully...",response.path("message"));
+        Assert.assertEquals(200,response.statusCode());
+
+    }
 }
