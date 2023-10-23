@@ -26,4 +26,18 @@ public class Users_stepDefs {
     public void verifyThatNewUserIsDeleted() {
         usersRequests.verifyThatUserIsDeleted();
     }
+
+    @When("Get user by ID with GET method")
+    public void get_user_by_ID_with_GET_method() {
+
+    }
+
+    @When("Verify that the user is new user")
+    public void verify_that_the_user_is_new_user() {
+
+    }
+    @When("Login and Get Token with POST method")
+    public void login_and_Get_Token_with_POST_method() {
+
+    }
 }
