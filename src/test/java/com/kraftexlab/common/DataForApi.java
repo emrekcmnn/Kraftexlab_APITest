@@ -2,12 +2,8 @@ package com.kraftexlab.common;
 
 import com.github.javafaker.Faker;
 import com.kraftexlab.utilities.Globals;
-
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class DataForApi {
   static   Faker faker;
@@ -60,13 +56,12 @@ public class DataForApi {
     public static Map<String,Object> addEducationBody(){
         String university = faker.educator().university();
         String campus = faker.educator().campus();
-     //   String name = faker.university().name();
         String secondarySchool = faker.educator().secondarySchool();
-
-
-
         Boolean bl = faker.random().nextBoolean();
         String sentence = faker.lorem().sentence();
+
+        Globals.schoolName = university;
+
         Map<String,Object> educationBody= new HashMap<>();
         educationBody.put("school",university);
         educationBody.put("degree",campus);

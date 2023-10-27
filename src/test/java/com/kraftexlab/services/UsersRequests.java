@@ -4,6 +4,7 @@ import com.kraftexlab.common.DataForApi;
 import com.kraftexlab.utilities.Globals;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
 
 public class UsersRequests extends Globals {
@@ -16,7 +17,7 @@ public class UsersRequests extends Globals {
                .contentType(ContentType.JSON)
                 .body(DataForApi.registerNewUserBody())
                 .post("/sw/api/v1/allusers/register");
-        response.prettyPrint();
+      //  response.prettyPrint();
 
         userId = response.path("id");
         token = response.path("token");
@@ -29,13 +30,14 @@ public class UsersRequests extends Globals {
         Assert.assertNotNull(token);
     }
 
-    public void getUserByID(){
+    public JsonPath getUserByID(){
 
         response = RestAssured.given()
                 .accept(ContentType.JSON)
                 .pathParam("id",userId)
                 .get("/sw/api/v1/allusers/getbyid/{id}");
-        response.prettyPrint();
+       // response.prettyPrint();
+        return  response.jsonPath();
     }
 
     public void loginAndGetToken() {

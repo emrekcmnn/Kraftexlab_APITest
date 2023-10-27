@@ -10,3 +10,4 @@ Feature: add education
     And Add education to user with POST method
     Then Verify that education is added
     Then Delete this new user
+    Then Verify that new user is deleted

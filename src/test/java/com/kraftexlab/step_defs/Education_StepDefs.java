@@ -8,6 +8,7 @@ public class Education_StepDefs {
 
     EducationRequests educationRequests = new EducationRequests();
 
+
     @When("Get user's all educations with GET method")
     public void get_user_s_all_educations_with_GET_method() {
         educationRequests.getUsersAllEducations();
@@ -26,7 +27,7 @@ public class Education_StepDefs {
 
     @Then("Verify that education is added")
     public void verify_that_education_is_added() {
-
+        educationRequests.verifyThatEducationIsAdded();
     }
 
 }

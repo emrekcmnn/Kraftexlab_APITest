@@ -12,4 +12,7 @@ public class Globals {
     public static String email;
 
     public static String password;
+
+    public static String schoolName;
+    public static int schoolId;
 }

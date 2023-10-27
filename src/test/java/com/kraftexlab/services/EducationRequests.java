@@ -4,14 +4,17 @@ import com.kraftexlab.common.DataForApi;
 import com.kraftexlab.utilities.Globals;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import org.hamcrest.Matchers;
+import org.junit.Assert;
 
 public class EducationRequests extends Globals {
-    public void getUsersAllEducations(){
+    public JsonPath getUsersAllEducations(){
        response = RestAssured.given()
                 .header("token",token)
                 .get("/sw/api/v1/education/all");
         response.prettyPrint();
+        return response.jsonPath();
 
     }
 
@@ -27,6 +30,14 @@ public class EducationRequests extends Globals {
                 .body(DataForApi.addEducationBody())
                 .header("token",token)
                 .post("/sw/api/v1/education/add");
-        response.prettyPrint();
+        schoolId = response.path("id");
+    }
+
+    public void verifyThatEducationIsAdded(){
+        int actualSchoolId = getUsersAllEducations().get("id[0]");
+        String actualSchoolName = getUsersAllEducations().get("school[0]");
+
+        Assert.assertEquals(schoolId,actualSchoolId);
+        Assert.assertEquals(schoolName,actualSchoolName);
     }
 }
