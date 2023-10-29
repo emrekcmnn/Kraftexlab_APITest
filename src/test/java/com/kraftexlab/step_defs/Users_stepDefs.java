@@ -1,12 +1,15 @@
 package com.kraftexlab.step_defs;
 
 import com.kraftexlab.services.UsersRequests;
+import com.kraftexlab.utilities.Globals;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class Users_stepDefs {
     UsersRequests usersRequests = new UsersRequests();
+
     @Given("Send a request for registering new user with POST method")
     public void sendARequestForRegisteringNewUserWithPOSTMethod() {
         usersRequests.registerNewUser();
@@ -36,5 +39,15 @@ public class Users_stepDefs {
     @When("Login and Get Token with POST method")
     public void login_and_Get_Token_with_POST_method() {
         usersRequests.loginAndGetToken();
+    }
+
+    @Given("Get a user by {int}")
+    public void get_a_user_by(int userId) {
+       usersRequests.getUserByID(userId);
+    }
+
+    @When("Verify that the status code is {int}")
+    public void verify_that(int expectedStatusCode) {
+        Assert.assertEquals(expectedStatusCode,Globals.response.statusCode());
     }
 }

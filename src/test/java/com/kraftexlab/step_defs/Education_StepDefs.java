@@ -29,5 +29,9 @@ public class Education_StepDefs {
     public void verify_that_education_is_added() {
         educationRequests.verifyThatEducationIsAdded();
     }
+    @Then("Verify that first education information {int} , {string} , {string}")
+    public void verify_that_first_education_information(int educationId, String school, String degree) {
+        educationRequests.verifyThatFirstEducationInfo(educationId,school,degree);
+    }
 
 }

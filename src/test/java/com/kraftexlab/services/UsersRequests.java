@@ -39,7 +39,14 @@ public class UsersRequests extends Globals {
        // response.prettyPrint();
         return  response.jsonPath();
     }
+    public JsonPath getUserByID(int userId){
 
+        response = RestAssured.given()
+                .accept(ContentType.JSON)
+                .pathParam("id",userId)
+                .get("/sw/api/v1/allusers/getbyid/{id}");
+        return  response.jsonPath();
+    }
     public void loginAndGetToken() {
         response = RestAssured.given()
                 .accept(ContentType.MULTIPART)
