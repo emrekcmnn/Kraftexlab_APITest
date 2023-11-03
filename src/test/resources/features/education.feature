@@ -12,7 +12,7 @@ Feature: add education
     Then Delete this new user
     Then Verify that new user is deleted
 
-  @wip
+
   Scenario Outline: Education information Verification
     Given Get a user by <User ID>
     When Verify that the status code is <status code>
@@ -20,4 +20,15 @@ Feature: add education
 
     Examples:
       | User ID | status code | education id | school | degree      |
-      | 1038    | 200         | 795          | UÜ     | engineering |
+      | 1038    | 200         | 795          | UÜ    | engineering |
+
+  @wip
+  Scenario Outline: Education information Verification with gson
+    Given Get a user by <User ID>
+    And Login with "thomasAnderson@gmail.com" and "123456" and Get Token
+    When Get user's all educations with GET method
+    Then Verify that first education information <education id> , "<school>" , "<degree>" with gson
+
+    Examples:
+      | User ID  | education id | school | degree      |
+      | 1038     | 795          | UÜ    | engineering |

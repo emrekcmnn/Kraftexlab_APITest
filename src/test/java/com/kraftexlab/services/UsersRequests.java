@@ -57,6 +57,16 @@ public class UsersRequests extends Globals {
         token = response.path("token");
         System.out.println("token = " + token);
     }
+    public void loginAndGetToken(String email, String password) {
+        response = RestAssured.given()
+                .accept(ContentType.MULTIPART)
+                .formParam("email",email)
+                .formParam("password",password)
+                .when()
+                .post("/sw/api/v1/allusers/login");
+        token = response.path("token");
+        System.out.println("token = " + token);
+    }
     public void deleteUser(){
         response= RestAssured.given()
                 .accept(ContentType.JSON)

@@ -5,6 +5,7 @@ import com.kraftexlab.utilities.Globals;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import java.util.List;
@@ -55,9 +56,12 @@ public class EducationRequests extends Globals {
         int actualEducationId= (int) actualEducationIdDouble;
         String actualSchool = (String) listOfEducation.get(0).get("school");
         String actualDegree = (String) listOfEducation.get(0).get("degree");
-
-        Assert.assertEquals(educationId,actualEducationId);
-        Assert.assertEquals(school,actualSchool);
-        Assert.assertEquals(degree,actualDegree);
+        Assertions.assertThat(actualEducationId).isEqualTo(educationId);
+        Assertions.assertThat(actualSchool).isEqualTo(school);
+        Assertions.assertThat(degree).isEqualTo(actualDegree);
+//        Assert.assertEquals(educationId,actualEducationId);
+//        Assert.assertEquals(school,actualSchool);
+//        Assert.assertEquals(degree,actualDegree);
+        response.prettyPrint();
     }
 }

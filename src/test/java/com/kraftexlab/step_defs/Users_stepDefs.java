@@ -2,6 +2,7 @@ package com.kraftexlab.step_defs;
 
 import com.kraftexlab.services.UsersRequests;
 import com.kraftexlab.utilities.Globals;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -49,5 +50,10 @@ public class Users_stepDefs {
     @When("Verify that the status code is {int}")
     public void verify_that(int expectedStatusCode) {
         Assert.assertEquals(expectedStatusCode,Globals.response.statusCode());
+    }
+
+    @And("Login with {string} and {string} and Get Token")
+    public void loginWithAndAndGetToken(String email, String password) {
+        usersRequests.loginAndGetToken(email,password);
     }
 }
